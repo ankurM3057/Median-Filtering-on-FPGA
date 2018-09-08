@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity ORDERING_COMP is
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
-			  A : in  STD_LOGIC_VECTOR (7 downto 0);
+	   A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            MAX : out  STD_LOGIC_VECTOR (7 downto 0);
@@ -51,7 +51,8 @@ component P_E is
     Port ( clk,rst : in  STD_LOGIC;
            A,B : in  STD_LOGIC_VECTOR (7 downto 0);
            MAX,MIN : out  STD_LOGIC_VECTOR (7 downto 0));
-end component;
+end component;
+
 signal S1,S2,S3,S4,S5,S6: STD_LOGIC_VECTOR (7 downto 0);
 
 begin
