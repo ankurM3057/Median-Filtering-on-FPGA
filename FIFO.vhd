@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity FIFO is
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
-			  D : in  STD_LOGIC_VECTOR (7 downto 0);
+	   D : in  STD_LOGIC_VECTOR (7 downto 0);
            Q : out  STD_LOGIC_VECTOR (7 downto 0));
 end FIFO;
 
