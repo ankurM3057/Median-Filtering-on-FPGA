@@ -27,9 +27,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity MED_FILTER is
+entity MED_FILTER is                   -- median filter (MAIN CODE)
     Port ( clk,rst : in STD_LOGIC;
-			  A : in  STD_LOGIC_VECTOR (7 downto 0);
+	   A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            VALUE : out  STD_LOGIC_VECTOR (7 downto 0));
@@ -37,17 +37,17 @@ end MED_FILTER;
 
 architecture Behavioral of MED_FILTER is
 
-COMPONENT FIFO is                     -- FIFO
+COMPONENT FIFO is                     -- FIFO(first in first out)
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
-			  D : in  STD_LOGIC_VECTOR (7 downto 0);
+           D : in  STD_LOGIC_VECTOR (7 downto 0);
            Q : out  STD_LOGIC_VECTOR (7 downto 0));
 end COMPONENT;
 
 COMPONENT ORDERING_COMP is
-    Port ( clk : in  STD_LOGIC;
+    Port ( clk : in  STD_LOGIC;	      --ordering comparator
            rst : in  STD_LOGIC;
-			  A : in  STD_LOGIC_VECTOR (7 downto 0);
+	   A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            MAX : out  STD_LOGIC_VECTOR (7 downto 0);
@@ -56,34 +56,40 @@ COMPONENT ORDERING_COMP is
            );
 end COMPONENT;
 
-COMPONENT D_FF is
+COMPONENT D_FF is                       -- D flip-flop
     Port ( clk,rst : in  STD_LOGIC;
            D : in  STD_LOGIC_VECTOR(7 downto 0);
            Q : out  STD_LOGIC_VECTOR(7 downto 0));
 end COMPONENT;
 
-COMPONENT MIN_COMP is
+COMPONENT MIN_COMP is                   -- Minimum calculator
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
            A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            MIN : out  STD_LOGIC_VECTOR (7 downto 0));
-end COMPONENT;COMPONENT MID_COMP is
+end COMPONENT;
+
+COMPONENT MID_COMP is                    --Middle calculator
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
            A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            MID : out  STD_LOGIC_VECTOR (7 downto 0));
-end COMPONENT;COMPONENT MAX_COMP is
+end COMPONENT;
+
+COMPONENT MAX_COMP is                     --Maximum Calculator
     Port ( clk : in  STD_LOGIC;
            rst : in  STD_LOGIC;
            A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
            C : in  STD_LOGIC_VECTOR (7 downto 0);
            MAX : out  STD_LOGIC_VECTOR (7 downto 0));
-end COMPONENT;signal S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15: STD_LOGIC_VECTOR (7 downto 0);          
+end COMPONENT;
+
+signal S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15: STD_LOGIC_VECTOR (7 downto 0);          
 
 begin
 
