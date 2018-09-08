@@ -57,6 +57,8 @@ ARCHITECTURE behavior OF MED_FILTER_TEST_vhd IS
 
 	--Outputs
 	SIGNAL VALUE :  std_logic_vector(7 downto 0);
+
+	--Declare the clock period
 	constant time_period: time:= 10ns;
 
 BEGIN
@@ -71,6 +73,7 @@ BEGIN
 		VALUE => VALUE
 	);
 
+	--start the clock process	
 	clk_process : PROCESS
 	BEGIN
 	
@@ -78,9 +81,10 @@ BEGIN
 	 wait for time_period/2;
 	 clk<='1';
 	 wait for time_period/2;
-	
+	 
 	END PROCESS;
 	
+	--Force the inputs or give the inputs for testing	 
 	tb : PROCESS
 	BEGIN
 		
