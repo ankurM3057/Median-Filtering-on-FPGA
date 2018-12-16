@@ -93,9 +93,9 @@ signal S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15: STD_LOGIC_VECTOR (7 d
 
 begin
 
-U1: FIFO PORT MAP(clk,rst,A,S1);
-U2: FIFO PORT MAP(clk,rst,B,S2);
-U3: FIFO PORT MAP(clk,rst,C,S3);
+U1: FIFO port map(clk,rst,A,S1);
+U2: FIFO port map(clk,rst,B,S2);
+U3: FIFO port map(clk,rst,C,S3);
 U4: ORDERING_COMP port map(clk,rst,S1,S2,S3,S4,S5,S6);
 U5: D_FF port map(clk,rst,S4,S7);
 U6: D_FF port map(clk,rst,S5,S8);
